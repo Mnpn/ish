@@ -23,6 +23,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *exportContainerCell;
 
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+
 @end
 
 @implementation AboutViewController
@@ -31,6 +33,9 @@
     [super viewDidLoad];
     [self _addObservers];
     [self _updatePreferenceUI];
+    _versionLabel.text = [NSString stringWithFormat:@"iSH %@ (Build %@)",
+                          [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
+                          [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]];
 }
 
 - (void)dealloc {
